@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<title>🔥 Campus Hub · SRM Trichy</title>
+<style>
+:root{--bg:#2a0d0e;--card:#3f1618;--tx:#f6e6d3;--mu:#d2ad93;--bd:#140505;--ok:#55ff55;--wn:#ffaa00;--bad:#ff6b5b;--ac:#d9531e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;border-radius:0!important}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--tx);background:var(--bg) conic-gradient(rgba(255,60,20,.07) 25%,transparent 0 50%,rgba(0,0,0,.2) 0 75%,transparent 0) 0 0/40px 40px;font:20px/1.25 'VT323','Courier New',monospace;letter-spacing:.2px}
+main{max-width:1000px;margin:0 auto;padding:0 16px 90px}
+.hd{margin:0 -16px 18px;padding:22px 16px 12px;background:linear-gradient(#ff7a00 0 8px,#ffcf7a 8px 10px,#b8290a 10px 16px,#5a1a1a 16px);border-bottom:6px solid #1a0505;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25)}
+h1{font:16px/1.5 'Press Start 2P','Courier New',monospace;margin:0;color:#fff;text-shadow:3px 3px 0 #2a0505}p.s{color:#f1e3c8;margin:4px 0 0;font-size:18px}
+.card{background:var(--card);padding:14px;margin-bottom:18px;box-shadow:inset 4px 4px 0 rgba(255,140,80,.22),inset -4px -4px 0 rgba(0,0,0,.35),0 0 0 3px #111}
+.card>b:first-child{font:11px/1.6 'Press Start 2P',monospace;color:var(--tx)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end}label{font-size:16px;color:var(--mu);display:block;margin-bottom:3px}
+input,select,button{font:inherit;color:#fff;background:#000;border:2px solid #7a3a30;padding:5px 8px}
+input[type=checkbox]{width:18px;height:18px;padding:0;accent-color:#ff7a00}
+button{cursor:pointer;background:#5c2020;border:0;box-shadow:inset 3px 3px 0 #a04a3a,inset -3px -3px 0 #2a0a0a,0 0 0 2px #000;padding:7px 12px;text-shadow:2px 2px 0 #3f3f3f}button:hover{background:#8a3030}button:active{box-shadow:inset 3px 3px 0 #2a0a0a,inset -3px -3px 0 #a04a3a,0 0 0 2px #000}
+button.pri{background:#d9531e;box-shadow:inset 3px 3px 0 #ff9b4a,inset -3px -3px 0 #7a2a05,0 0 0 2px #000}button.pri:hover{background:#f06a2a}
+input.ok{color:#55ff55}input.wn{color:#ffaa00}input.bad{color:#ff5555}
+.kp{display:flex;gap:14px;flex-wrap:wrap}.kp div{flex:1 1 140px}.kp b{display:block;font:18px/1.6 'Press Start 2P',monospace}
+.ok{color:var(--ok)}.wn{color:var(--wn)}.bad{color:var(--bad)}small,.mu{color:var(--mu);font-size:17px}
+.tag{display:inline-block;padding:1px 7px;font:9px/1.7 'Press Start 2P',monospace;border:2px solid currentColor;background:rgba(0,0,0,.25);white-space:nowrap}
+.alert{background:#aa0000;color:#fff;padding:16px;margin-bottom:18px;box-shadow:inset 4px 4px 0 #ff5555,inset -4px -4px 0 #550000,0 0 0 4px #ffaa00;animation:p 1s steps(2) infinite}.alert h2{margin:0 0 8px;font:14px/1.6 'Press Start 2P',monospace;color:#ffff55;text-shadow:2px 2px 0 #000}
+@keyframes p{50%{background:#7a0000}}@media(prefers-reduced-motion:reduce){.alert{animation:none}}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:820px}th,td{text-align:left;padding:7px 8px;border-bottom:3px solid rgba(0,0,0,.25);font-size:18px;vertical-align:top}th{font:8px/1.6 'Press Start 2P',monospace;color:var(--mu)}
+td input{width:76px}.bar{height:12px;background:#000;border:2px solid #000;position:relative;margin-top:6px;min-width:80px}.bar i{position:absolute;inset:0 auto 0 0;background:currentColor;background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(0,0,0,.4) 8px 10px)}.bar u{position:absolute;top:-3px;bottom:-3px;width:3px;background:#ffff55;opacity:.9}
+.note{box-shadow:inset 4px 0 0 #ffaa00,inset 4px 4px 0 rgba(255,140,80,.22),0 0 0 3px #111}
+.ch{display:flex;flex-wrap:wrap;gap:14px}.ch>div{flex:1 1 280px;min-width:0}.ch h3,.card h3{font:9px/1.8 'Press Start 2P',monospace;margin:0 0 6px;color:var(--mu)}svg{max-width:100%;height:auto}svg text{font-family:'VT323',monospace;font-size:14px}
+.hearts{font-size:24px;letter-spacing:1px;margin:4px 0}.hearts span{color:#ff2a2a}.hearts .h{opacity:.5}.hearts .e{color:#555}
+.chip{display:inline-flex;gap:6px;align-items:center;border:2px solid #000;background:rgba(0,0,0,.2);padding:1px 4px 1px 8px;margin:3px 6px 3px 0;font-size:18px}.chip button{padding:0 6px;background:none;box-shadow:none;color:#ff5555;text-shadow:none}
+#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;padding:12px 16px;font:11px 'Press Start 2P',monospace}
+#cb{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));width:min(390px,calc(100vw - 32px));height:min(540px,calc(100vh - 150px));z-index:21;background:var(--card);display:none;flex-direction:column;box-shadow:inset 4px 4px 0 rgba(255,140,80,.22),inset -4px -4px 0 rgba(0,0,0,.35),0 0 0 3px #111,0 8px 0 3px rgba(0,0,0,.35)}
+#cb.on{display:flex}#cb header{padding:12px 14px;background:#5a1a1a;color:#ffcf7a;font:10px 'Press Start 2P',monospace;display:flex;justify-content:space-between;align-items:center;text-shadow:2px 2px 0 #3f3f3f}#ms{flex:1;overflow:auto;padding:10px}
+.m{max-width:92%;padding:7px 10px;margin:7px 0;font-size:19px;box-shadow:0 0 0 2px #000}.u{background:#d9531e;color:#fff;margin-left:auto}.b{background:#1a0707;color:#eee}.b b.bad{color:#ff5555}.b b.ok{color:#55ff55}.b b.wn{color:#ffaa00}
+#cf{display:flex;gap:6px;padding:8px}#cf input{flex:1;min-width:0}.qs{padding:0 10px 6px}.qs button{font-size:16px;margin:3px 4px 3px 0;padding:3px 8px}
+[hidden]{display:none!important}#nv{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}#nv button{font:10px/1.6 'Press Start 2P',monospace;padding:11px 13px}#nv button.on{background:#d9531e;box-shadow:inset 3px 3px 0 #ff9b4a,inset -3px -3px 0 #7a2a05,0 0 0 2px #ffcf7a}
+.rp iframe{display:block;width:100%;height:calc(100vh - 240px);min-height:620px;border:0;background:#1c0808;box-shadow:0 0 0 3px #000,0 0 0 6px #d9531e}</style></head><body><main>
+<div class="hd"><h1>🔥 Campus Hub</h1>
+<p class="s">SRM Institute of Science and Technology, Tiruchirappalli · Attendance Planner · IST Room Finder · Semester 29 Aug – 29 Nov 2026</p></div>
+
+<nav id="nv" aria-label="Sections"><button data-t="att" class="on">📚 Attendance</button><button data-t="r1">🏫 IST Room Finder</button><button data-t="r2">🔎 Campus Rooms</button></nav>
+<div id="att">
+<div class="card"><div class="row">
+<div><label>Your section</label><select id="sec"></select></div>
+<div><label>Today (auto)</label><input type="date" id="td"></div>
+<div><label>Planning date (future)</label><input type="date" id="pd"></div>
+<div><label>Goal</label><select id="tg"><option value="90">Reach / keep 90%</option><option value="85">85%</option><option value="80">80%</option></select></div>
+<label style="display:flex;gap:6px;align-items:center;margin:0 0 8px;color:var(--tx)"><input type="checkbox" id="lv"> I'll miss everything until the planning date</label>
+</div>
+<div class="row" style="margin-top:10px"><div style="flex:1 1 320px"><label>Holidays (no classes), editable. Verify with your college calendar.</label><input id="hl" style="width:100%" value="2026-09-14, 2026-10-02, 2026-10-19, 2026-10-20"></div></div></div>
+
+<div id="al"></div><div id="nt"></div>
+<div class="card"><div class="kp" id="kp"></div></div>
+
+<div class="card"><b>Attendance health</b>
+<div class="ch"><div><h3>Overall now</h3><div id="c1"></div></div><div><h3>By subject: now vs best possible</h3><div id="c2"></div></div></div>
+<h3 style="margin:10px 0 4px;font-size:14px">Projection to 29 Nov (weekly)</h3><div id="c3"></div></div>
+
+<div class="card"><b>Enter your current attendance % for each subject</b> <small>(from your portal)</small>
+<div class="tw"><table id="tb"></table></div>
+<small>Bar ticks: 75% (detention line) and 90%. Held so far comes from your timetable; attended = % × held. Each period is one class; no classes on Saturday or Sunday.</small></div>
+
+<div class="card"><b>Leave &amp; OD simulator</b>
+<div class="row" style="margin-top:8px"><div><label>Type</label><select id="lt"><option value="O">OD / On-Duty (counts present)</option><option value="M">Medical with certificate (condoned)</option><option value="A">Sick / absent, no proof</option></select></div>
+<div><label>From</label><input type="date" id="lf"></div><div><label>To</label><input type="date" id="lto"></div><button class="pri" id="la">Add leave</button></div>
+<div id="ll" style="margin-top:8px"></div>
+<small>Future dates: OD counts as attended, Medical removes those classes from the total (condoned), Absent counts against you. Past dates: OD turns your missed classes into present, Medical removes them. Your college's condonation rules may differ.</small></div>
+</div>
+<div id="r1" class="rp" hidden></div><div id="r2" class="rp" hidden></div>
+</main>
+
+<button id="fab" class="pri">⛏ Attendance Advisor</button>
+<div id="cb"><header><span>Attendance Advisor</span><button id="cx" style="border:0;background:none">✕</button></header><div id="ms"></div>
+<div class="qs" id="qs"></div><form id="cf"><input id="ci" placeholder="e.g. 3-day sick leave from tomorrow, Chemistry?" autocomplete="off"><button class="pri">Send</button></form></div>
+
+<script type="text/plain" id="src1"><!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IST Room Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef0ee;--card:#fff;--ink:#16211f;--mut:#5f6b68;--line:#d9dfdc;--slab:#cfd6d2;--core:#9aa5a1;--free:#1f9d6b;--soon:#c98a0b;--busy:#cf4b3f;--mine:#4f56d6}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101514;--card:#1a2120;--ink:#e9efed;--mut:#93a09c;--line:#2a3432;--slab:#243030;--core:#4b5754}}
+:root[data-theme="dark"]{--bg:#101514;--card:#1a2120;--ink:#e9efed;--mut:#93a09c;--line:#2a3432;--slab:#243030;--core:#4b5754}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 'Space Grotesk',system-ui,sans-serif}
+.app{max-width:1120px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:flex-end;justify-content:space-between}
+h1{font-size:26px;line-height:1.1;margin:0;letter-spacing:-.02em}
+h2{font-size:20px;margin:0}
+.mut{color:var(--mut)}
+.clock{text-align:right;font-variant-numeric:tabular-nums;font-size:22px;font-weight:600}
+.clock small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+.grid{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;margin-top:14px;align-items:start}
+@media(max-width:840px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.side{display:grid;gap:16px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+button,.btn{font:inherit;cursor:pointer}
+.tabs button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.tabs i{font-style:normal;opacity:.7;margin-left:4px}
+#stage{position:relative;height:440px;margin-top:10px;perspective:1500px;touch-action:none;cursor:grab;overflow:hidden;user-select:none;border-radius:10px;background:radial-gradient(circle at 50% 35%,var(--card),var(--bg))}
+#stage:active{cursor:grabbing}
+#plane{position:absolute;left:50%;top:50%;width:452px;height:216px;transform-style:preserve-3d}
+.slab{position:absolute;inset:-16px;background:var(--slab);border-radius:8px;transform:translateZ(-2px);box-shadow:0 26px 36px rgba(0,0,0,.2)}
+.room{position:absolute;transform-style:preserve-3d;--h:30px;outline:none;transition:transform .25s}
+.room>div{position:absolute;background:var(--c)}
+.room .t{inset:0;transform:translateZ(var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4);line-height:1.15}
+.room .t b{font-size:15px}.room .t small{font-size:11px}
+.fr,.bk{left:0;width:100%;height:var(--h);transform-origin:top;transform:rotateX(90deg)}
+.fr{top:100%;filter:brightness(.8)}.bk{top:0;filter:brightness(.7)}
+.lf,.rt{top:0;height:100%;width:var(--h);transform-origin:left;transform:rotateY(-90deg)}
+.lf{left:0;filter:brightness(.6)}.rt{left:100%;filter:brightness(.7)}
+.free{--c:var(--free)}.soon{--c:var(--soon)}.busy{--c:var(--busy)}.mine{--c:var(--mine)}
+.core{--h:52px;--c:var(--core)}
+.room[data-id]{cursor:pointer}
+.room[data-id]:hover{transform:translateZ(8px)}
+.room.sel{transform:translateZ(18px)}
+.room.sel .t{outline:3px solid #fff;outline-offset:-5px}
+.room:focus-visible .t{outline:3px solid var(--ink);outline-offset:-3px}
+.hint{font-size:13px;color:var(--mut);margin:8px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin-top:10px}
+.legend span:before,.dot:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--c);margin-right:6px;vertical-align:-1px}
+.sim{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;font-size:14px}
+.sim input{flex:1;min-width:140px;accent-color:var(--free)}
+.sim button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:13px;font-weight:600;color:#fff;background:var(--c);padding:2px 10px;border-radius:999px}
+#cd{font-size:44px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin-top:2px}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:var(--c);transition:width 1s linear}
+.chips{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;margin:8px 0 14px}
+.chips span{border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--mut)}
+.chips .on{background:var(--busy);color:#fff;border-color:var(--busy)}.chips .past{text-decoration:line-through;opacity:.6}
+.act{display:flex;flex-direction:column;gap:8px}
+#claim{border:0;border-radius:10px;padding:11px 14px;font-weight:600;background:var(--ink);color:var(--card)}
+#squad{display:block;text-align:center;text-decoration:none;border-radius:10px;padding:11px 14px;font-weight:700;background:#25d366;color:#06301a}
+#msg{font-size:13px;color:var(--mut);margin:0}
+#list{display:grid;gap:6px;margin-top:8px}
+#list button{display:flex;justify-content:space-between;gap:8px;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:8px 10px}
+#list span{color:var(--mut)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--mine);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+html:root[data-theme="dark"],:root[data-theme="dark"]{--bg:#1c0808;--card:#3a1215;--surf:#3a1215;--ink:#f6e6d3;--mut:#d2ad93;--line:#6a2a22;--leaf:#5a1e1e;--slab:#4a1a17;--core:#7a4a3a;--free:#2fbf4a;--soon:#e08a00;--busy:#d63a2a;--mine:#8a7bff;--warn:#5a2a10;--warnink:#ffcf7a;
+--sh:inset 3px 3px 0 rgba(255,150,90,.2),inset -3px -3px 0 rgba(0,0,0,.45),0 0 0 3px #000;--in:inset 3px 3px 0 rgba(0,0,0,.55),inset -3px -3px 0 rgba(255,150,90,.14)}
+*,*:before,*:after{border-radius:0!important;font-family:'VT323','Courier New',monospace!important;letter-spacing:.2px}
+html,body{font-size:20px}body{background:#1c0808 conic-gradient(rgba(255,60,20,.07) 25%,transparent 0 50%,rgba(0,0,0,.2) 0 75%,transparent 0) 0 0/40px 40px!important}
+h1,h2,h3,.brand-name,.head h2{font-family:'Press Start 2P','Courier New',monospace!important;line-height:1.5!important;text-shadow:3px 3px 0 #2a0505;color:#ffcf7a}
+h1{font-size:18px!important}h1 em{color:#ff7a00}h2{font-size:12px!important}#rn{font-size:13px!important}.head h2,.fl-head h2{font-size:13px!important}.brand-name{font-size:12px!important}
+.card,.panel,.room-card,.sidebar,.how div,.banner,.notice{border:0!important;box-shadow:var(--sh)!important}
+.room .t b,.room .t small{font-size:19px!important}#cd{font-size:44px!important}.clock,.clockt{font-size:22px!important}
+button,.btn,.tabs button,#claim,#squad,.tab,.fchip,.txt,.sim button,#list button,.hints button{background:#5c2020!important;color:#fff!important;border:0!important;box-shadow:inset 3px 3px 0 #a04a3a,inset -3px -3px 0 #2a0a0a,0 0 0 2px #000!important;text-shadow:2px 2px 0 #2a0505}
+button:hover,.btn:hover{background:#8a3030!important}
+.tabs button[aria-pressed=true],.tab[aria-pressed=true],.fchip[aria-pressed=true],#claim,.btn{background:#d9531e!important;box-shadow:inset 3px 3px 0 #ff9b4a,inset -3px -3px 0 #7a2a05,0 0 0 2px #000!important}
+#squad{background:#2a8a3a!important;color:#fff!important}
+input,#q{background:#000!important;color:#fff!important;border:2px solid #7a3a30!important;box-shadow:none!important}
+.bar{background:#000!important;box-shadow:none!important;border:2px solid #000}.bar i{background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(0,0,0,.4) 8px 10px)}
+.badge,.pill,.tag{border:2px solid #000}.room .t{text-shadow:2px 2px 0 rgba(0,0,0,.6)}
+.slab{box-shadow:0 26px 36px rgba(255,80,0,.25)!important;background:#3a1512!important}
+</style></head>
+<body>
+<div class="app">
+<header>
+  <div><h1>IST Room Finder</h1><div class="mut" id="stats"></div></div>
+  <div class="clock"><span id="clk"></span><small id="mode"></small></div>
+</header>
+
+<div class="grid">
+  <section class="card" aria-label="Building map">
+    <div class="tabs" id="tabs" role="group" aria-label="Floor"></div>
+    <div id="stage"><div id="plane"></div></div>
+    <p class="hint">Drag to rotate the building. Tap a room to see its countdown.</p>
+    <div class="legend">
+      <span class="free">Free</span><span class="soon">Class in under 30 min</span><span class="busy">In class</span><span class="mine">Your room</span>
+    </div>
+    <label class="sim">Preview a time of day
+      <input type="range" id="tm" min="420" max="1140" step="5">
+      <b id="tml"></b><button id="live" type="button">Back to live</button>
+    </label>
+  </section>
+
+  <div class="side">
+    <section class="card" id="panel" aria-live="polite">
+      <p id="empty" class="mut" style="margin:0">Select a room on the map to see how long it stays free.</p>
+      <div id="info" hidden>
+        <div class="row"><h2 id="rn"></h2><span class="badge" id="badge"></span></div>
+        <div class="mut" id="cdl" style="margin-top:12px"></div>
+        <div id="cd"></div>
+        <div class="bar"><i id="bar"></i></div>
+        <div id="sub"></div>
+        <div class="chips" id="today" aria-label="Classes today in this room"></div>
+        <div class="act">
+          <button id="claim" type="button"></button>
+          <a id="squad" target="_blank" rel="noopener">Call the Squad on WhatsApp</a>
+          <p id="msg"></p>
+        </div>
+      </div>
+    </section>
+    <section class="card">
+      <h2 style="font-size:17px">Free right now</h2>
+      <div id="list"></div>
+    </section>
+  </div>
+</div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0');
+const P=[510,600,690,780,870,960].map(m=>[m*60,(m+80)*60]); // 8:30, 10:00, 11:30, 1:00, 2:30, 4:00 — 80 min classes
+const TAG={free:'free',soon:'soon',busy:'in class',mine:'you'};
+let skew=0,floor=5,sel='',mine='',rx=58,rz=-32,sc=1,drag=null,moved=false;
+try{mine=localStorage.getItem('ist-mine')||''}catch(e){}
+const save=()=>{try{localStorage.setItem('ist-mine',mine)}catch(e){}};
+const now=()=>new Date(Date.now()+skew);
+
+const rooms=[];
+for(let f=1;f<=5;f++)for(let n=1;n<=9;n++){const i=n<=5?n-1:n-6;rooms.push({id:`${f}0${n}`,name:`IST ${f}0${n}`,f,x:i*92,y:n<=5?0:126})}
+const byId=Object.fromEntries(rooms.map(r=>[r.id,r]));
+
+// Demo timetable: seeded per room + weekday, no classes on weekends
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const memo={};
+const slots=(r,day)=>{const k=r.id+day;if(memo[k])return memo[k];if(day%6===0)return memo[k]=[];const g=rng(r.f*131+r.id*17+day*7919);return memo[k]=P.filter(()=>g()<.55)};
+
+function st(r,d){
+  const s=d.getHours()*3600+d.getMinutes()*60+d.getSeconds(),sl=slots(r,d.getDay()),c=sl.find(x=>s>=x[0]&&s<x[1]);
+  if(c)return{busy:1,s,until:c[1],left:c[1]-s,span:c[1]-c[0]};
+  const nx=sl.find(x=>x[0]>s),pe=sl.filter(x=>x[1]<=s).pop(),from=pe?pe[1]:6*3600;
+  return{busy:0,s,until:nx?nx[0]:null,left:nx?nx[0]-s:1e9,span:nx?nx[0]-from:1,soon:!!nx&&nx[0]-s<1800};
+}
+const cls=(r,x)=>x.busy?'busy':r.id===mine?'mine':x.soon?'soon':'free';
+const t12=s=>{const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return`${h%12||12}:${pad(m)} ${h<12?'AM':'PM'}`};
+const hms=s=>`${pad(Math.floor(s/3600))}:${pad(Math.floor(s%3600/60))}:${pad(s%60)}`;
+const set=(el,h)=>{if(el.innerHTML!==h)el.innerHTML=h};
+
+// ---- 3D map ----
+const stage=$('#stage'),plane=$('#plane');
+const box=(c,x,y,w,d,h,inner,attr='')=>`<div class="room ${c}" style="left:${x}px;top:${y}px;width:${w}px;height:${d}px;--h:${h}px" ${attr}><div class="t">${inner}</div><div class="fr"></div><div class="bk"></div><div class="lf"></div><div class="rt"></div></div>`;
+function build(){
+  let h='<div class="slab"></div>';
+  rooms.filter(r=>r.f===floor).forEach(r=>h+=box('free',r.x,r.y,84,90,30,`<b>${r.id}</b><small></small>`,`data-id="${r.id}" tabindex="0" role="button"`));
+  h+=box('core',368,126,84,90,52,'<small>Lift &amp; stairs</small>');
+  plane.innerHTML=h;
+}
+const xf=()=>plane.style.transform=`translate(-50%,-50%) scale(${sc}) rotateX(${rx}deg) rotateZ(${rz}deg)`;
+const fit=()=>{sc=Math.max(.55,Math.min(1.3,(stage.clientWidth-30)/540));xf()};
+addEventListener('resize',fit);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,rx,rz};moved=false});
+addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;if(moved){rz=clamp(drag.rz+dx*.4,-85,15);rx=clamp(drag.rx-dy*.3,30,75);xf()}});
+addEventListener('pointerup',()=>drag=null);
+const pick=id=>{sel=id;paint()};
+stage.addEventListener('click',e=>{if(moved)return;const el=e.target.closest('.room[data-id]');if(el)pick(el.dataset.id)});
+stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const el=e.target.closest('.room[data-id]');if(el){e.preventDefault();pick(el.dataset.id)}}});
+
+// ---- controls ----
+$('#tabs').innerHTML=[1,2,3,4,5].map(f=>`<button type="button" data-f="${f}">Floor ${f}<i></i></button>`).join('');
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){floor=+b.dataset.f;build();paint()}});
+$('#list').addEventListener('click',e=>{const b=e.target.closest('button');if(b){sel=b.dataset.id;floor=byId[sel].f;build();paint()}});
+const tm=$('#tm');
+tm.addEventListener('input',()=>{skew=new Date().setHours(0,0,0,0)+tm.value*60000-Date.now();paint()});
+$('#live').addEventListener('click',()=>{skew=0;paint()});
+$('#claim').addEventListener('click',()=>{mine=mine===sel?'':sel;save();paint()});
+
+// ---- paint (runs every second) ----
+function paint(){
+  const d=now(),X={};rooms.forEach(r=>X[r.id]=st(r,d));
+  if(mine&&X[mine].busy){mine='';save()}
+  const s=X[rooms[0].id].s,day=d.getDay();
+  $('#clk').textContent=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  $('#mode').textContent=skew?'Previewing a time of day':'Live now';
+  if(!skew)tm.value=clamp(Math.floor(s/300)*5,420,1140);
+  $('#tml').textContent=t12(tm.value*60);
+  const free=rooms.filter(r=>!X[r.id].busy).length;
+  $('#stats').textContent=`${free} of ${rooms.length} rooms free`+(day%6===0?' · weekend, no classes scheduled':'');
+  document.querySelectorAll('#tabs button').forEach(b=>{const f=+b.dataset.f;b.setAttribute('aria-pressed',f===floor);b.querySelector('i').textContent=rooms.filter(r=>r.f===f&&!X[r.id].busy).length+' free'});
+  plane.querySelectorAll('.room[data-id]').forEach(el=>{
+    const r=byId[el.dataset.id],x=X[r.id],c=cls(r,x);
+    el.className='room '+c+(r.id===sel?' sel':'');
+    el.querySelector('small').textContent=TAG[c];
+    el.setAttribute('aria-label',`${r.name}, ${x.busy?'in class until '+t12(x.until):x.until?'free until '+t12(x.until):'free all day'}`);
+  });
+  const L=rooms.filter(r=>!X[r.id].busy).sort((a,b)=>X[b.id].left-X[a.id].left).slice(0,6);
+  set($('#list'),L.map(r=>`<button type="button" data-id="${r.id}"><b>${r.name}</b><span>${X[r.id].until?'until '+t12(X[r.id].until):'all day'}</span></button>`).join('')||'<p class="mut">Every room is in class right now.</p>');
+  const r=byId[sel];$('#empty').hidden=!!r;$('#info').hidden=!r;
+  if(!r)return;
+  const x=X[r.id],c=cls(r,x),info=$('#info');
+  info.className=c;
+  $('#rn').textContent=`${r.name}, floor ${r.f}`;
+  $('#badge').textContent=x.busy?'In class':c==='mine'?'Yours':x.soon?'Class soon':'Free';
+  let cdl,cd,sub;
+  if(x.busy){cdl='Class ends in';cd=hms(x.left);sub=`In use until ${t12(x.until)}.`}
+  else if(x.until){cdl='Next class starts in';cd=hms(x.left);sub=`Free until ${t12(x.until)}.`}
+  else{cdl='No more classes today';cd='All day';sub='Free for the rest of the day.'}
+  $('#cdl').textContent=cdl;$('#cd').textContent=cd;$('#sub').textContent=sub;
+  $('#bar').style.width=(x.until?clamp(x.left/x.span*100,0,100):100)+'%';
+  const sl=slots(r,day);
+  set($('#today'),sl.length?sl.map(z=>`<span class="${x.s>=z[0]&&x.s<z[1]?'on':x.s>=z[1]?'past':''}">${t12(z[0])} – ${t12(z[1])}</span>`).join(''):'<span>No classes today</span>');
+  const cl=$('#claim');cl.hidden=!!x.busy&&r.id!==mine;cl.textContent=r.id===mine?'Release this room':'Claim this room';
+  const sq=$('#squad'),msg=`📍 Heading to ${r.name}. ${x.until?`It's free until ${t12(x.until)}.`:"It's free for the rest of the day."} Come fast!`;
+  sq.hidden=$('#msg').hidden=r.id!==mine;
+  sq.href='https://wa.me/?text='+encodeURIComponent(msg);$('#msg').textContent='Message: '+msg;
+}
+fit();build();paint();setInterval(paint,1000);
+<\/script>
+</body>
+</html>
+</script>
+<script type="text/plain" id="src2"><!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RoomFinder — Campus spaces</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#E8ECE5;--surf:#F5F7F1;--ink:#20382F;--mut:#5a6d63;--leaf:#C6D8C1;--line:#d3dbcf;--warn:#f3dfbd;--warnink:#6d4310;--slab:#cdd7c9;--core:#9fb0a4;
+--free:#3a8c63;--soon:#b3761a;--busy:#c2554a;--mine:#5a61c8;
+--sh:6px 6px 14px rgba(32,56,47,.14),-5px -5px 12px rgba(255,255,255,.8);--in:inset 3px 3px 7px rgba(32,56,47,.13),inset -3px -3px 7px rgba(255,255,255,.85)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141b17;--surf:#1e2822;--ink:#e4eee7;--mut:#9bb0a3;--leaf:#33493c;--line:#2d3b33;--warn:#4a3a1e;--warnink:#f0cf9a;--slab:#26332b;--core:#4b5b51;--sh:6px 6px 14px rgba(0,0,0,.45),-4px -4px 10px rgba(255,255,255,.03);--in:inset 3px 3px 7px rgba(0,0,0,.45),inset -2px -2px 6px rgba(255,255,255,.04)}}
+:root[data-theme="dark"]{--bg:#141b17;--surf:#1e2822;--ink:#e4eee7;--mut:#9bb0a3;--leaf:#33493c;--line:#2d3b33;--warn:#4a3a1e;--warnink:#f0cf9a;--slab:#26332b;--core:#4b5b51;--sh:6px 6px 14px rgba(0,0,0,.45),-4px -4px 10px rgba(255,255,255,.03);--in:inset 3px 3px 7px rgba(0,0,0,.45),inset -2px -2px 6px rgba(255,255,255,.04)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'Nunito',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
+button{font:inherit;color:inherit;cursor:pointer}
+.mono,.rc-name,.clockt{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.app-shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;padding:22px 16px;display:flex;flex-direction:column;gap:12px;background:var(--surf);box-shadow:var(--sh);border-radius:0 24px 24px 0}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:inherit}
+.brand-mark{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:var(--leaf);box-shadow:var(--sh);font-size:18px}
+.brand-name{font-family:'Fraunces',serif;font-size:21px;font-weight:600;line-height:1.1}.brand-name span{color:var(--free)}.brand-name small{display:block;font:600 11px 'Nunito';color:var(--mut);letter-spacing:.06em}
+.rule{height:1px;background:var(--line)}
+.nav-label{font-size:12px;color:var(--mut);padding:0 8px}
+.side-nav{display:grid;gap:4px}
+.side-nav a{padding:9px 12px;border-radius:14px;text-decoration:none;color:inherit;font-weight:600}
+.side-nav a:hover{background:var(--bg)}.side-nav a.active{background:var(--leaf);box-shadow:var(--sh)}
+.side-bottom{margin-top:auto;display:grid;gap:10px}
+.help,.campus{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:18px;background:var(--bg);box-shadow:var(--in);font-size:13px}
+.help p,.campus small{display:block;margin:0;color:var(--mut)}
+.avatar{width:34px;height:34px;border-radius:12px;background:var(--leaf);display:grid;place-items:center;font-weight:700;font-size:12px;flex:none}
+main{min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 28px}
+.crumb{color:var(--mut)}.crumb strong{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--warn);color:var(--warnink)}
+.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill.free,.pill.soon,.pill.busy,.pill.mine{background:var(--c);color:#fff}
+.top-r{display:flex;gap:10px;align-items:center}
+.wrap{max-width:1040px;padding:4px 28px 36px;display:grid;gap:22px}
+.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.08}h1 em{color:var(--free)}
+.intro{margin:8px 0 0;color:var(--mut)}
+.chip{display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:999px;background:var(--surf);box-shadow:var(--sh);font-weight:600;font-size:14px}
+.clockt{font-size:13px}
+.panel{background:var(--surf);border-radius:24px;box-shadow:var(--sh);padding:18px}
+.search-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px;font-weight:700}
+.search-top small{font-weight:600;color:var(--mut)}
+.search-form{display:flex;gap:10px;flex-wrap:wrap}
+.search-form input{flex:1;min-width:220px;border:0;border-radius:18px;padding:13px 16px;background:var(--bg);box-shadow:var(--in);color:var(--ink);font:inherit}
+.btn{border:0;border-radius:16px;padding:12px 18px;font-weight:700;background:var(--ink);color:var(--surf);box-shadow:var(--sh)}
+.hints{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--mut)}
+.hints button,.fchip,.tab,.txt,.sim button{border:0;background:var(--bg);border-radius:999px;padding:6px 13px;box-shadow:var(--sh);font-weight:600;font-size:13px}
+.notice{margin-top:10px;padding:10px 14px;border-radius:14px;background:var(--warn);color:var(--warnink);font-size:14px}
+.banner{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 18px;border-radius:20px;background:var(--warn);color:var(--warnink)}
+.banner div{flex:1;min-width:220px}.banner strong{display:block}.banner b{font-size:12px;letter-spacing:.05em}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.head h2{font-size:26px}.tag{font:600 12px 'IBM Plex Mono';background:var(--warn);color:var(--warnink);padding:2px 8px;border-radius:8px;vertical-align:middle;margin-left:6px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tab[aria-pressed=true],.fchip[aria-pressed=true]{background:var(--ink);color:var(--surf)}
+.tab i{font-style:normal;opacity:.7;margin-left:5px}
+.map-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+@media(max-width:940px){.map-grid{grid-template-columns:1fr}.app-shell{grid-template-columns:1fr}.sidebar{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;border-radius:0 0 24px 24px}.side-bottom,.rule,.nav-label{display:none}.side-nav{display:flex;flex-wrap:wrap}.topbar,.wrap{padding-left:16px;padding-right:16px}}
+#stage{position:relative;height:400px;perspective:1500px;touch-action:none;cursor:grab;overflow:hidden;user-select:none;border-radius:20px;background:var(--bg);box-shadow:var(--in)}
+#stage:active{cursor:grabbing}
+#plane{position:absolute;left:50%;top:50%;width:312px;height:232px;transform-style:preserve-3d}
+.slab{position:absolute;inset:-18px;background:var(--slab);border-radius:16px;transform:translateZ(-2px);box-shadow:0 24px 34px rgba(0,0,0,.2)}
+.room{position:absolute;transform-style:preserve-3d;--h:30px;outline:none;transition:transform .25s}
+.room>div{position:absolute;background:var(--c)}
+.room .t{inset:0;transform:translateZ(var(--h));display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4);line-height:1.2;border-radius:10px}
+.room .t b{font:600 15px 'IBM Plex Mono'}.room .t small{font-size:12px}
+.fr,.bk{left:0;width:100%;height:var(--h);transform-origin:top;transform:rotateX(90deg)}
+.fr{top:100%;filter:brightness(.8)}.bk{top:0;filter:brightness(.7)}
+.lf,.rt{top:0;height:100%;width:var(--h);transform-origin:left;transform:rotateY(-90deg)}
+.lf{left:0;filter:brightness(.6)}.rt{left:100%;filter:brightness(.7)}
+.free{--c:var(--free)}.soon{--c:var(--soon)}.busy{--c:var(--busy)}.mine{--c:var(--mine)}
+.core{--h:50px;--c:var(--core)}
+.room[data-id]{cursor:pointer}.room[data-id]:hover{transform:translateZ(8px)}.room.sel{transform:translateZ(18px)}
+.room.sel .t{outline:3px solid #fff;outline-offset:-5px}
+.room:focus-visible .t{outline:3px solid var(--ink);outline-offset:-3px}
+.hint{font-size:13px;color:var(--mut);margin:10px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin-top:8px}
+.legend span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:4px;background:var(--c);margin-right:6px}
+.sim{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;font-size:14px}
+.sim input{flex:1;min-width:140px;accent-color:var(--free)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:13px;font-weight:700;color:#fff;background:var(--c);padding:2px 11px;border-radius:999px}
+#rn{font-size:22px}.rt2{font-size:13px;color:var(--mut)}
+#cd{font:600 40px/1.1 'IBM Plex Mono',monospace;letter-spacing:-.03em;margin-top:2px}
+.bar{height:10px;border-radius:10px;background:var(--bg);box-shadow:var(--in);overflow:hidden;margin:12px 0}
+.bar i{display:block;height:100%;background:var(--c);border-radius:10px;transition:width 1s linear}
+.chips{display:flex;flex-wrap:wrap;gap:6px;font:500 12px 'IBM Plex Mono';margin:8px 0 14px}
+.chips span{border-radius:8px;padding:2px 8px;background:var(--bg);color:var(--mut)}
+.chips .on{background:var(--busy);color:#fff}.chips .past{text-decoration:line-through;opacity:.6}
+.act{display:flex;flex-direction:column;gap:8px}
+#squad{display:block;text-align:center;text-decoration:none;border-radius:16px;padding:12px 14px;font-weight:700;background:#25d366;color:#06301a;box-shadow:var(--sh)}
+#msg{font-size:13px;color:var(--mut);margin:0}
+.floor-list{display:grid;gap:26px}
+.fl-head{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.fl-mark{width:42px;height:42px;border-radius:14px;background:var(--leaf);box-shadow:var(--sh);display:grid;place-items:center;font:600 18px 'Fraunces'}
+.fl-head h2{font-size:22px}.fl-head p{margin:0;font-size:13px;color:var(--mut)}.fl-head .grow{flex:1}
+.room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.room-card{display:flex;flex-direction:column;gap:4px;text-align:left;border:0;padding:16px;border-radius:22px;background:var(--surf);box-shadow:var(--sh)}
+.room-card:hover{transform:translateY(-2px)}.room-card.picked{outline:3px solid var(--c)}
+.rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.rc-name{font-size:20px;font-weight:600}.rc-type{color:var(--mut)}.rc-meta{font-size:13px;color:var(--mut)}
+.rc-stat{margin-top:8px;font-weight:700;font-size:14px;color:var(--c)}.rc-stat em{font:normal 600 11px 'IBM Plex Mono';color:var(--warnink);background:var(--warn);padding:1px 6px;border-radius:6px;margin-left:4px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px}
+.how div{padding:14px;border-radius:18px;background:var(--bg);box-shadow:var(--in)}.how b{display:block;font-family:'Fraunces',serif;font-size:17px}.how span{color:var(--mut);font-size:14px}
+footer{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--mut);font-size:13px}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--mine);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+html:root[data-theme="dark"],:root[data-theme="dark"]{--bg:#1c0808;--card:#3a1215;--surf:#3a1215;--ink:#f6e6d3;--mut:#d2ad93;--line:#6a2a22;--leaf:#5a1e1e;--slab:#4a1a17;--core:#7a4a3a;--free:#2fbf4a;--soon:#e08a00;--busy:#d63a2a;--mine:#8a7bff;--warn:#5a2a10;--warnink:#ffcf7a;
+--sh:inset 3px 3px 0 rgba(255,150,90,.2),inset -3px -3px 0 rgba(0,0,0,.45),0 0 0 3px #000;--in:inset 3px 3px 0 rgba(0,0,0,.55),inset -3px -3px 0 rgba(255,150,90,.14)}
+*,*:before,*:after{border-radius:0!important;font-family:'VT323','Courier New',monospace!important;letter-spacing:.2px}
+html,body{font-size:20px}body{background:#1c0808 conic-gradient(rgba(255,60,20,.07) 25%,transparent 0 50%,rgba(0,0,0,.2) 0 75%,transparent 0) 0 0/40px 40px!important}
+h1,h2,h3,.brand-name,.head h2{font-family:'Press Start 2P','Courier New',monospace!important;line-height:1.5!important;text-shadow:3px 3px 0 #2a0505;color:#ffcf7a}
+h1{font-size:18px!important}h1 em{color:#ff7a00}h2{font-size:12px!important}#rn{font-size:13px!important}.head h2,.fl-head h2{font-size:13px!important}.brand-name{font-size:12px!important}
+.card,.panel,.room-card,.sidebar,.how div,.banner,.notice{border:0!important;box-shadow:var(--sh)!important}
+.room .t b,.room .t small{font-size:19px!important}#cd{font-size:44px!important}.clock,.clockt{font-size:22px!important}
+button,.btn,.tabs button,#claim,#squad,.tab,.fchip,.txt,.sim button,#list button,.hints button{background:#5c2020!important;color:#fff!important;border:0!important;box-shadow:inset 3px 3px 0 #a04a3a,inset -3px -3px 0 #2a0a0a,0 0 0 2px #000!important;text-shadow:2px 2px 0 #2a0505}
+button:hover,.btn:hover{background:#8a3030!important}
+.tabs button[aria-pressed=true],.tab[aria-pressed=true],.fchip[aria-pressed=true],#claim,.btn{background:#d9531e!important;box-shadow:inset 3px 3px 0 #ff9b4a,inset -3px -3px 0 #7a2a05,0 0 0 2px #000!important}
+#squad{background:#2a8a3a!important;color:#fff!important}
+input,#q{background:#000!important;color:#fff!important;border:2px solid #7a3a30!important;box-shadow:none!important}
+.bar{background:#000!important;box-shadow:none!important;border:2px solid #000}.bar i{background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(0,0,0,.4) 8px 10px)}
+.badge,.pill,.tag{border:2px solid #000}.room .t{text-shadow:2px 2px 0 rgba(0,0,0,.6)}
+.slab{box-shadow:0 26px 36px rgba(255,80,0,.25)!important;background:#3a1512!important}
+</style></head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <a class="brand" href="#top" aria-label="RoomFinder home"><span class="brand-mark">◎</span><span class="brand-name">room<span>finder</span><small>Campus spaces</small></span></a>
+  <div class="rule"></div><div class="nav-label">Your campus</div>
+  <nav class="side-nav" aria-label="Main navigation"><a class="active" href="#availability">Find a room</a><a href="#floors">Floor directory</a><a href="#how-it-works">How it works</a></nav>
+  <div class="side-bottom">
+    <div class="help"><div><strong>New to RoomFinder?</strong><p>Learn how availability is calculated.</p></div></div>
+    <div class="campus"><span class="avatar">NU</span><span><strong>Northfield University</strong><small>Central campus</small></span></div>
+  </div>
+</aside>
+
+<main id="top">
+<header class="topbar">
+  <div class="crumb">Campus tools / <strong>Room availability</strong></div>
+  <div class="top-r"><span class="pill">Timetable connection pending</span><span class="avatar" title="Signed in as student">ST</span></div>
+</header>
+
+<div class="wrap">
+  <div class="welcome">
+    <div><h1>Find your <em>next</em> room to think.</h1><p class="intro">See what is free on a 3D map, watch the countdown, then call your squad.</p></div>
+    <div class="chip"><span id="date"></span><span class="clockt" id="clk"></span></div>
+  </div>
+
+  <section class="panel" aria-label="Room finder search">
+    <div class="search-top"><span>Room finder <small>· Tell us what you need</small></span><span class="pill">Keyword search preview</span></div>
+    <form class="search-form" id="sf">
+      <input id="q" aria-label="Describe the room you need" placeholder="e.g. An AC room on the ground floor for 6 people, now">
+      <button class="btn" type="submit">Find a room</button>
+    </form>
+    <div class="notice" id="notice" role="status" hidden></div>
+    <div class="hints">Try: <button type="button" data-q="AC room for a team of 6 on the ground floor">AC for a team</button><button type="button" data-q="Quiet study room now">Quiet, free now</button><button type="button" data-q="Room with a screen available now">With a screen now</button></div>
+  </section>
+
+  <div class="banner"><div><strong>Schedule data isn’t connected yet</strong>Availability, colors and countdowns use illustrative demo timetables, not real campus bookings.</div><b>DEMO DATA</b></div>
+
+  <div>
+    <div class="head" id="availability"><div><h2>Rooms by floor <span class="tag">Demo timetable</span></h2></div>
+      <div class="filters"><button class="fchip" type="button" id="fac" aria-pressed="false">Air-conditioned</button><button class="fchip" type="button" id="fnow" aria-pressed="false">Free now</button><button class="txt" type="button" id="fclr">Clear</button></div></div>
+    <div class="filters" id="tabs" role="group" aria-label="Filter by floor" style="margin-top:14px"></div>
+  </div>
+
+  <section class="panel" id="map" aria-label="Building map">
+    <div class="map-grid">
+      <div>
+        <div id="stage"><div id="plane"></div></div>
+        <p class="hint">Drag to rotate the building. Tap a room for its countdown.</p>
+        <div class="legend"><span class="free">Free</span><span class="soon">Class in under 30 min</span><span class="busy">In class</span><span class="mine">Your room</span></div>
+        <label class="sim">Preview a time of day <input type="range" id="tm" min="420" max="1140" step="5"><b class="mono" id="tml"></b><button id="live" type="button">Back to live</button></label>
+      </div>
+      <div aria-live="polite">
+        <p id="empty" class="rt2" style="margin:0">Select a room on the map or in the directory to see how long it stays free.</p>
+        <div id="info" hidden>
+          <div class="row"><h2 id="rn"></h2><span class="badge" id="badge"></span></div>
+          <div class="rt2" id="rd"></div>
+          <div class="rt2" id="cdl" style="margin-top:14px"></div>
+          <div id="cd"></div>
+          <div class="bar"><i id="bar"></i></div>
+          <div id="sub"></div>
+          <div class="chips" id="today" aria-label="Classes today in this room"></div>
+          <div class="act">
+            <button class="btn" id="claim" type="button"></button>
+            <a id="squad" target="_blank" rel="noopener">Call the Squad on WhatsApp</a>
+            <p id="msg"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="floor-list" id="floors"></div>
+
+  <section class="panel" id="how-it-works">
+    <h2 style="font-size:22px">How it works</h2>
+    <div class="how"><div><b>Colors from timetables</b><span>Each room turns green, amber or red from its class windows. Demo timetables stand in until real ones are loaded.</span></div><div><b>A live countdown</b><span>Select a room to see the time left before its next class starts, or before the current one ends.</span></div><div><b>Claim, then call the squad</b><span>Claiming is a local demo and not an official booking. The squad button opens WhatsApp with your message ready.</span></div></div>
+  </section>
+  <footer><span>RoomFinder · Helping campus life flow.</span><span>Demo data only</span></footer>
+</div>
+</main>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),pad=n=>String(n).padStart(2,'0'),clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const P=[510,600,690,780,870,960].map(m=>[m*60,(m+80)*60]); // demo classes: 8:30, 10:00, 11:30, 1:00, 2:30, 4:00 (80 min)
+const TAG={free:'Free',soon:'Soon',busy:'In class',mine:'You'};
+const FL=[
+ {id:'ground',label:'Ground floor',short:'G',wing:'Main building · east wing',rooms:[['G.014','Seminar room',18,'AC,Screen'],['G.021','Project studio',10,'AC,Whiteboard'],['G.032','Tutorial room',24,'Whiteboard'],['G.038','Quiet study',6,'AC,Quiet']]},
+ {id:'first',label:'First floor',short:'1',wing:'Main building · west wing',rooms:[['1.108','Discussion room',8,'AC,Display'],['1.116','Lecture room',32,'Projector'],['1.124','Study room',12,'AC,Whiteboard']]},
+ {id:'second',label:'Second floor',short:'2',wing:'Learning commons · north',rooms:[['2.204','Collaboration room',14,'AC,Display'],['2.219','Seminar room',20,'Whiteboard']]}];
+const filterFloors=(fs,id)=>id==='all'?fs:fs.filter(f=>f.id===id);
+const R=[];FL.forEach(f=>f.rooms.forEach((x,i)=>R.push({name:x[0],type:x[1],cap:x[2],ft:x[3].split(','),f:f.id,fl:f,x:Math.floor(i/2)*108,y:i%2*136,h:[...x[0]].reduce((a,c)=>a*31+c.charCodeAt(0)|0,7)})));
+const byId=Object.fromEntries(R.map(r=>[r.name,r]));
+let skew=0,S={floor:'all',q:'',ac:0,now:0},sel='',mine='',built='',rx=58,rz=-32,sc=1,drag=null,moved=false;
+try{mine=localStorage.getItem('rf-mine')||''}catch(e){}
+const save=()=>{try{localStorage.setItem('rf-mine',mine)}catch(e){}};
+const now=()=>new Date(Date.now()+skew);
+const set=(el,h)=>{if(el.innerHTML!==h)el.innerHTML=h};
+
+// Demo timetable: seeded per room + weekday, none on weekends
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const memo={};
+const slots=(r,day)=>{const k=r.name+day;if(memo[k])return memo[k];if(day%6===0)return memo[k]=[];const g=rng(r.h+day*7919);return memo[k]=P.filter(()=>g()<.55)};
+function st(r,d){
+  const s=d.getHours()*3600+d.getMinutes()*60+d.getSeconds(),sl=slots(r,d.getDay()),c=sl.find(x=>s>=x[0]&&s<x[1]);
+  if(c)return{busy:1,s,until:c[1],left:c[1]-s,span:c[1]-c[0]};
+  const nx=sl.find(x=>x[0]>s),pe=sl.filter(x=>x[1]<=s).pop(),from=pe?pe[1]:6*3600;
+  return{busy:0,s,until:nx?nx[0]:null,left:nx?nx[0]-s:1e9,span:nx?nx[0]-from:1,soon:!!nx&&nx[0]-s<1800};
+}
+const cls=(r,x)=>x.busy?'busy':r.name===mine?'mine':x.soon?'soon':'free';
+const t12=s=>{const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return`${h%12||12}:${pad(m)} ${h<12?'AM':'PM'}`};
+const hms=s=>`${pad(Math.floor(s/3600))}:${pad(Math.floor(s%3600/60))}:${pad(s%60)}`;
+const stat=x=>x.busy?'In class until '+t12(x.until):x.until?'Free until '+t12(x.until):'Free all day';
+
+// Keyword search (preview): floors, features, group size, "now"
+function parse(q){q=q.toLowerCase();const o={ft:[]};
+  FL.forEach(f=>{if(q.includes(f.id))o.floor=f.id});
+  if(/\bac\b|a\/c|air.?con/.test(q))o.ft.push('AC');
+  ['screen','whiteboard','quiet','projector','display'].forEach(k=>{if(q.includes(k))o.ft.push(k[0].toUpperCase()+k.slice(1))});
+  const m=q.match(/(\d+)\s*(people|persons|students)|team of (\d+)|for (\d+)\s*(?!hour|h\b)/);if(m)o.cap=+(m[1]||m[3]||m[4]);
+  o.now=/\bnow\b|available/.test(q);return o}
+
+// ---- 3D map ----
+const stage=$('#stage'),plane=$('#plane');
+const box=(c,x,y,w,d,h,inner,attr='')=>`<div class="room ${c}" style="left:${x}px;top:${y}px;width:${w}px;height:${d}px;--h:${h}px" ${attr}><div class="t">${inner}</div><div class="fr"></div><div class="bk"></div><div class="lf"></div><div class="rt"></div></div>`;
+function build(f){built=f;let h='<div class="slab"></div>';
+  R.filter(r=>r.f===f).forEach(r=>h+=box('free',r.x,r.y,96,96,30,`<b>${r.name}</b><small></small>`,`data-id="${r.name}" tabindex="0" role="button"`));
+  plane.innerHTML=h+box('core',216,0,96,232,50,'<small>Lift &amp; stairs</small>')}
+const xf=()=>plane.style.transform=`translate(-50%,-50%) scale(${sc}) rotateX(${rx}deg) rotateZ(${rz}deg)`;
+const fit=()=>{sc=clamp((stage.clientWidth-30)/430,.6,1.5);xf()};
+addEventListener('resize',fit);
+stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,rx,rz};moved=false});
+addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;if(moved){rz=clamp(drag.rz+dx*.4,-85,15);rx=clamp(drag.rx-dy*.3,30,75);xf()}});
+addEventListener('pointerup',()=>drag=null);
+const pick=id=>{sel=id;paint()};
+stage.addEventListener('click',e=>{if(moved)return;const el=e.target.closest('.room[data-id]');if(el)pick(el.dataset.id)});
+stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const el=e.target.closest('.room[data-id]');if(el){e.preventDefault();pick(el.dataset.id)}}});
+
+// ---- controls ----
+const TABS=[{id:'all',label:'All floors'},...FL];
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b){S.floor=b.dataset.f;paint()}});
+$('#floors').addEventListener('click',e=>{
+  const v=e.target.closest('[data-view]');if(v){S.floor=v.dataset.view;paint();return}
+  const c=e.target.closest('.room-card');if(c){sel=c.dataset.id;if(S.floor!=='all')S.floor=byId[sel].f;paint();$('#map').scrollIntoView()}});
+$('#fac').onclick=()=>{S.ac=!S.ac;paint()};$('#fnow').onclick=()=>{S.now=!S.now;paint()};
+$('#fclr').onclick=()=>{S={floor:'all',q:'',ac:0,now:0};$('#q').value='';$('#notice').hidden=true;paint()};
+$('#q').addEventListener('input',e=>{S.q=e.target.value;$('#notice').hidden=true;paint()});
+document.querySelectorAll('.hints button').forEach(b=>b.onclick=()=>{$('#q').value=S.q=b.dataset.q;$('#sf').requestSubmit()});
+$('#sf').addEventListener('submit',e=>{e.preventDefault();S.q=$('#q').value;paint();const n=$('#notice');n.hidden=false;n.textContent=`Keyword match found ${matches.length} example room${matches.length===1?'':'s'}. Upload the campus timetables to turn on accurate AI matching; availability shown is demo data.`});
+const tm=$('#tm');
+tm.addEventListener('input',()=>{skew=new Date().setHours(0,0,0,0)+tm.value*60000-Date.now();paint()});
+$('#live').onclick=()=>{skew=0;paint()};
+$('#claim').onclick=()=>{mine=mine===sel?'':sel;save();paint()};
+
+let matches=[];
+function paint(){
+  const d=now(),X={};R.forEach(r=>X[r.name]=st(r,d));
+  if(mine&&X[mine].busy){mine='';save()}
+  const s=X[R[0].name].s,day=d.getDay(),pq=parse(S.q);
+  $('#date').textContent=d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})+' · '+(skew?'Preview ':'Live ');
+  $('#clk').textContent=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  if(!skew)tm.value=clamp(Math.floor(s/300)*5,420,1140);
+  $('#tml').textContent=t12(tm.value*60);
+  $('#fac').setAttribute('aria-pressed',!!S.ac);$('#fnow').setAttribute('aria-pressed',!!S.now);
+  // tabs
+  set($('#tabs'),TABS.map(f=>{const n=R.filter(r=>(f.id==='all'||r.f===f.id)&&!X[r.name].busy).length;return`<button type="button" class="tab" data-f="${f.id}" aria-pressed="${S.floor===f.id}">${f.label}<i>${n} free</i></button>`}).join(''));
+  // map
+  const mf=S.floor!=='all'?S.floor:sel?byId[sel].f:'ground';
+  if(mf!==built)build(mf);
+  plane.querySelectorAll('.room[data-id]').forEach(el=>{
+    const r=byId[el.dataset.id],x=X[r.name],c=cls(r,x);
+    el.className='room '+c+(r.name===sel?' sel':'');
+    el.querySelector('small').textContent=TAG[c];
+    el.setAttribute('aria-label',`${r.name}, ${r.type}, ${stat(x).toLowerCase()}`);
+  });
+  // detail + countdown
+  const r=byId[sel];$('#empty').hidden=!!r;$('#info').hidden=!r;
+  if(r){
+    const x=X[r.name],c=cls(r,x);$('#info').className=c;
+    $('#rn').textContent=r.name;$('#rd').textContent=`${r.type} · ${r.fl.label} · up to ${r.cap} · ${r.ft.join(', ')}`;
+    $('#badge').textContent=x.busy?'In class':c==='mine'?'Yours':x.soon?'Class soon':'Free';
+    let cdl,cd,sub;
+    if(x.busy){cdl='Class ends in';cd=hms(x.left);sub=`In use until ${t12(x.until)}. Demo timetable.`}
+    else if(x.until){cdl='Next class starts in';cd=hms(x.left);sub=`Free until ${t12(x.until)}. Demo timetable.`}
+    else{cdl='No more classes today';cd='All day';sub='Free for the rest of the day. Demo timetable.'}
+    $('#cdl').textContent=cdl;$('#cd').textContent=cd;$('#sub').textContent=sub;
+    $('#bar').style.width=(x.until?clamp(x.left/x.span*100,0,100):100)+'%';
+    const sl=slots(r,day);
+    set($('#today'),sl.length?sl.map(z=>`<span class="${x.s>=z[0]&&x.s<z[1]?'on':x.s>=z[1]?'past':''}">${t12(z[0])}–${t12(z[1])}</span>`).join(''):'<span>No classes today</span>');
+    const cl=$('#claim');cl.hidden=!!x.busy&&r.name!==mine;cl.textContent=r.name===mine?'Release this room':'Claim this room';
+    const msg=`📍 Heading to ${r.name}. ${x.until?`It's free until ${t12(x.until)}.`:"It's free for the rest of the day."} Come fast!`;
+    $('#squad').hidden=$('#msg').hidden=r.name!==mine;
+    $('#squad').href='https://wa.me/?text='+encodeURIComponent(msg);$('#msg').textContent='Message: '+msg;
+  }
+  // directory
+  matches=R.filter(r=>(S.floor==='all'||r.f===S.floor)&&(!pq.floor||r.f===pq.floor)&&(!S.ac||r.ft.includes('AC'))&&(!(S.now||pq.now)||!X[r.name].busy)&&pq.ft.every(k=>r.ft.includes(k))&&(!pq.cap||r.cap>=pq.cap));
+  const h=filterFloors(FL,S.floor).map(f=>{const rs=matches.filter(r=>r.f===f.id);if(!rs.length)return'';
+    return`<section><div class="fl-head"><div class="fl-mark">${f.short}</div><div class="grow"><h2>${f.label}</h2><p>${f.wing}</p></div><span class="rt2">${rs.length} room${rs.length>1?'s':''}</span>${S.floor==='all'?`<button class="txt" type="button" data-view="${f.id}" aria-label="View ${f.label}">View floor</button>`:''}</div><div class="room-grid">${rs.map(r=>{const x=X[r.name],c=cls(r,x);
+      return`<button type="button" class="room-card ${c}${r.name===sel?' picked':''}" data-id="${r.name}"><span class="rc-top"><span class="pill ${c}">${TAG[c]}</span></span><span class="rc-name">${r.name}</span><span class="rc-type">${r.type}</span><span class="rc-meta">Up to ${r.cap} · ${r.ft.join(', ')}</span><span class="rc-stat">${stat(x)}<em>Demo</em></span></button>`}).join('')}</div></section>`}).join('');
+  set($('#floors'),h||'<div class="panel"><strong>No example rooms match.</strong> <span class="rt2">Try fewer filters, or press Clear.</span></div>');
+}
+fit();paint();setInterval(paint,1000);
+<\/script>
+</body>
+</html>
+</script>
+<script>
+const GL={CDC:"General Aptitude (CDC)",WS:"Workshop",GER:"German",CHE:"Chemistry Lab",PPS:"PPS Lab",PCB:"PCB / EC Lab",NSS:"NSS",JAP:"Japanese",YOGA:"Yoga"};
+const P=s=>Object.fromEntries(s.split('|').map(x=>x.split(':')));
+const ECE4="A:Behavioural Psychology|B:Wireless Comm & Antenna Systems|C:Computer Comm & Network Security|D:Semiconductor Memory Design|E:Scripting Language for EDA|F:Machine Learning for All|LAB:CCNS Lab";
+const T3="A:Discrete Mathematics|B:Microprocessor & Microcontroller|C:VLSI Design & Technology|D:System & Network on Chip|E:Machine Learning for All|F:Community Connect|G:Analytical & Logical Thinking|H:Indian Art Form|LAB:VLSI / Microprocessor Lab|BP:Microprocessor & Microcontroller";
+const T2D="A:Transforms & Boundary Value Problems|B:Solid State Devices|C:Computer Org & Architecture|D:Digital Logic Design|E:EM Theory & Interference|F:Professional Ethics|G:Universal Human Values-II|H:Verbal Reasoning|I:Social Engineering|LAB:Devices & Digital IC Lab";
+const I1="E:Philosophy of Engineering|A:Advanced Calculus|B:Chemistry|D:Programming for Problem Solving";
+const SEC={
+"IV ECE-A":{sl:P(ECE4),tt:["C - A D - - - -","C D B F - - - -","B LAB E F - - - -","F A E B - - - -","C A D E - - - -"]},
+"IV ECE-B":{sl:P(ECE4),tt:["C A E F - - - -","C E F B - - - -","C D A B - - - -","D B LAB A - - - -","E D F - - - - -"]},
+"III ECE-A":{sl:P(T3),tt:["E B B A G G - -","H D B BP - G - -","C A D F - - LAB LAB","A E C F - - - -","D A E C LAB LAB - -"]},
+"III ECE-B":{sl:P(T3),tt:["LAB LAB - - E B A D","G G - - F B D C","G - - - BP B A H","LAB LAB - - A C E F","- - - - C A E D"]},
+"III ECE-DS":{sl:P(T3.replace("D:System & Network on Chip","D:Machine Learning for All").replace("E:Machine Learning for All","E:Database Design & Management")),tt:["E B C A - - - -","C B D F LAB LAB - -","H B A C - - G G","A D E F - - - -","D A E BP G - LAB LAB"]},
+"III BME":{sl:P("A:Probability & Statistics|B:Microcontrollers in Medicine|C:Biomedical Signal Processing|D:Biometrics|E:Modern Wireless Comm|F:Principles of Medical Imaging|G:Analytical & Logical Thinking|H:Indian Art Form|I:Community Connect|MP:MPMC Lab|BD:Bio DSP Lab"),tt:["G G MP MP E B F H","BD BD G - C D A B","- - - - C A F D","- - - I A C E B","I - - - F A D E"]},
+"II ECE-DS A":{sl:P(T2D),tt:["E A I I G G LAB LAB","C A E D G - H H","A B C D - H - -","B C A F LAB LAB - -","D B E C - - - -"]},
+"II ECE-DS B":{sl:P(T2D),tt:["- - LAB LAB D B C I","LAB LAB - - C D E A","G - - - I E A D","G G H H A C B E","H - - - F A B C"]},
+"II BME":{sl:P("A:Transforms & Boundary Value Problems|B:Biomedical Signals & Systems|C:Electric & Electronic Circuits|D:Digital Logic for Medical Systems|E:Medical Physics|F:Professional Ethics|G:Universal Human Values-II|H:Verbal Reasoning|I:Social Engineering|LAB:DLMS / EEC Lab"),tt:["E C I I LAB LAB - -","C E B A H H - -","B D A - H G - -","A E B D - - LAB LAB","F A C D - - G G"]},
+"I ECE-A (2024-25 format)":{sl:P(I1+"|C:Electronic System & PCB Design|F:Biology"),tt:["E E B A CHE CHE F CDC","C B A D WS WS WS WS","B E D - PPS PPS PCB PCB","GER GER GER A CDC CDC NSS NSS","D A C B F GER GER GER"],old:1},
+"I ECE-B / EEE (2024-25 format)":{sl:P(I1+"|F:Electronic System & PCB Design|C:Biology"),tt:["CDC F CHE CHE E E B A","WS WS WS WS C B A D","F PPS CDC CDC - B E D","NSS NSS C A - D GER GER","PCB PCB - GER - - B A"],old:1},
+"I ECE-DS (2024-25 format)":{sl:P(I1+"|C:Electronic System & PCB Design|F:Biology"),tt:["F CDC PCB PCB E E B A","CHE CHE NSS NSS C B A D","CDC CDC A - PPS B E D","F A D GER - - C B","GER GER GER PPS WS WS WS WS"],old:1},
+"I Biotech-B / BME (2024-25 format)":{sl:P(I1+"|C:Cell Biology|F:Biochemistry"),tt:["C YOGA YOGA F E E A B","CDC CDC C F - B A D","WS WS WS WS D B E D","CHE CHE A C B JAP JAP JAP","F CDC A JAP JAP - PPS PPS"],old:1}};
+
+const START="2026-08-29",END="2026-11-29",$=i=>document.getElementById(i);
+const D=s=>new Date(s+'T00:00:00Z'),iso=d=>d.toISOString().slice(0,10),add=(s,n)=>iso(new Date(+D(s)+n*864e5));
+const fmt=d=>D(d).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});
+const now=new Date(),local=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+const zc=p=>p>=90?'ok':p>=75?'wn':'bad',f1=v=>v.toFixed(1);
+$('sec').innerHTML=Object.keys(SEC).map(k=>`<option>${k}</option>`).join('');
+$('td').value=local;$('pd').value=add(local,7);$('lf').value=add(local,1);$('lto').value=add(local,1);
+let leaves=[],pcts=[],subs=[],last=null;
+const LT={O:'OD',M:'Medical',A:'Absent'};
+function count(sec,f,t,hol,map){const r={},S=SEC[sec];for(let d=f;d<=t;d=add(d,1)){const w=D(d).getUTCDay();if(w<1||w>5||hol.has(d))continue;const ty=map&&map[d];S.tt[w-1].split(' ').forEach(x=>{if(x==='-')return;const n=S.sl[x]||GL[x]||x,o=r[n]||(r[n]={n:0,O:0,M:0,A:0});o.n++;if(ty)o[ty]++})}return r}
+function line(base,tot,av,g){const need=Math.max(0,Math.ceil(g/100*tot-base-1e-9));return{need,av,ok:need<=av,skip:av-need,best:tot?(base+av)/tot*100:100}}
+const st=x=>({sec:$('sec').value,td:$('td').value,pd:$('pd').value,win:$('lv').checked,hol:$('hl').value.split(/[,\s]+/).filter(Boolean),g:+$('tg').value,pct:pcts,lv:leaves.concat(x||[])});
+function compute(s){const hol=new Set(s.hol),from=s.td<START?START:s.td,lastD=add(s.td>END?END:s.td,-1),mf={},mp={};
+ if(s.win&&s.pd>=from)for(let d=from;d<=(s.pd>END?END:s.pd);d=add(d,1))mf[d]='A';
+ s.lv.forEach(l=>{for(let d=l.f;d<=l.t&&d<=END;d=add(d,1))(d<from?mp:mf)[d]=l.ty});
+ const held=count(s.sec,START,lastD,hol,mp),rem=s.td>END?{}:count(s.sec,from,END,hol,mf),names=Object.keys(count(s.sec,START,END,new Set())),T={H:0,A:0,R:0,tot:0,base:0,av:0};
+ const rows=names.map((n,i)=>{const h=held[n]||{n:0,O:0,M:0},r=rem[n]||{n:0,O:0,M:0,A:0},p=s.pct[i]??85,H0=h.n,A0=Math.round(p*H0/100),A=A0+Math.min(h.O,H0-A0),H=H0-Math.min(h.M,H0-A),tot=H+r.n-r.M,base=A+r.O,av=r.n-r.O-r.M-r.A;
+  T.H+=H;T.A+=A;T.R+=r.n;T.tot+=tot;T.base+=base;T.av+=av;
+  return{n,p,H,A,R:r.n,tot,base,av,now:H?A/H*100:100,best:tot?(base+av)/tot*100:100,l75:line(base,tot,av,75),lg:line(base,tot,av,s.g)}});
+ T.now=T.H?T.A/T.H*100:100;T.best=T.tot?(T.base+T.av)/T.tot*100:100;T.l75=line(T.base,T.tot,T.av,75);T.lg=line(T.base,T.tot,T.av,s.g);
+ const S=SEC[s.sec],pts=[{d:from,all:T.now,none:T.now}];let H=T.H,All=T.A,No=T.A;
+ for(let d=from;d<=END;d=add(d,1)){const w=D(d).getUTCDay();if(w>=1&&w<=5&&!hol.has(d)){const c=S.tt[w-1].split(' ').filter(x=>x!=='-').length,ty=mf[d];if(ty!=='M')H+=c;if(ty!=='A'&&ty!=='M')All+=c;if(ty==='O')No+=c}
+  if(w===5||d===END)pts.push({d,all:H?All/H*100:100,none:H?No/H*100:100})}
+ return{rows,T,pts,mf,hol,from,s}}
+/* charts */
+function donut(p){const R=52,C=2*Math.PI*R;return `<svg viewBox="0 0 140 140" width="170" class="${zc(p)}"><circle cx="70" cy="70" r="52" fill="none" stroke="var(--bd)" stroke-width="14"/><circle cx="70" cy="70" r="52" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="butt" stroke-dasharray="${Math.min(p,100)/100*C} ${C}" transform="rotate(-90 70 70)"/><text x="70" y="76" text-anchor="middle" style="font-size:26px" font-weight="700" fill="var(--tx)">${f1(p)}%</text></svg>`}
+function bars(rows){const h=26,W=560,l=170,w=v=>(W-l-70)*Math.min(v,100)/100;let s=`<svg viewBox="0 0 ${W} ${rows.length*h+22}">`;
+ rows.forEach((r,i)=>{const y=i*h+4;s+=`<text x="0" y="${y+13}" font-size="12" fill="var(--tx)">${r.n.length>26?r.n.slice(0,25)+'…':r.n}</text><g class="${zc(r.best)}"><rect x="${l}" y="${y+1}" width="${w(r.best)}" height="16" rx="0" fill="currentColor" opacity=".22"/></g><g class="${zc(r.now)}"><rect x="${l}" y="${y+4}" width="${w(r.now)}" height="10" rx="0" fill="currentColor"/></g><text x="${l+w(100)+6}" y="${y+13}" font-size="11" fill="var(--mu)">${r.now.toFixed(0)}→${r.best.toFixed(0)}%</text>`});
+ return s+[75,90].map(v=>`<line x1="${l+w(v)}" x2="${l+w(v)}" y1="0" y2="${rows.length*h}" stroke="var(--tx)" stroke-dasharray="3 3" opacity=".5"/><text x="${l+w(v)}" y="${rows.length*h+14}" font-size="11" text-anchor="middle" fill="var(--mu)">${v}%</text>`).join('')+'</svg>'}
+function lineChart(pts){const W=560,H=210,l=34,r=10,t=10,b=26,vals=pts.flatMap(p=>[p.all,p.none]),lo=Math.max(0,Math.floor((Math.min(...vals,70)-5)/5)*5),X=i=>l+(W-l-r)*i/Math.max(1,pts.length-1),Y=v=>t+(H-t-b)*(1-(v-lo)/(100-lo)),P=k=>pts.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(p[k]).toFixed(1)).join('');
+ let s=`<svg viewBox="0 0 ${W} ${H}">`;for(let v=Math.ceil(lo/10)*10;v<=100;v+=10)s+=`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--bd)"/><text x="${l-4}" y="${Y(v)+4}" font-size="10" text-anchor="end" fill="var(--mu)">${v}</text>`;
+ s+=`<line x1="${l}" x2="${W-r}" y1="${Y(75)}" y2="${Y(75)}" stroke="var(--bad)" stroke-dasharray="5 4"/><text x="${W-r}" y="${Y(75)-3}" font-size="10" text-anchor="end" fill="var(--bad)">75% detention line</text><line x1="${l}" x2="${W-r}" y1="${Y(90)}" y2="${Y(90)}" stroke="var(--ok)" stroke-dasharray="5 4"/><text x="${W-r}" y="${Y(90)-3}" font-size="10" text-anchor="end" fill="var(--ok)">90%</text>`;
+ s+=`<path d="${P('all')}" fill="none" stroke="var(--ok)" stroke-width="2.5"/><path d="${P('none')}" fill="none" stroke="var(--bad)" stroke-width="2.5"/><text x="${l}" y="${H-8}" font-size="10" fill="var(--mu)">${fmt(pts[0].d)}</text><text x="${W-r}" y="${H-8}" font-size="10" text-anchor="end" fill="var(--mu)">${fmt(pts[pts.length-1].d)}</text></svg>`;
+ return s+`<small><b class="ok">━</b> attend every remaining class (leaves applied) &nbsp; <b class="bad">━</b> attend nothing more</small>`}
+function hearts(p){let s='<div class="hearts" title="Attendance health">';for(let i=0;i<10;i++){const v=p/10-i;s+=`<span class="${v>=1?'':v>=.5?'h':'e'}">♥</span>`}return s+'</div><small>Health: '+f1(p)+'% (each heart = 10%)</small>'}
+/* leaves */
+function addLeave(f,t,ty){if(!f||!t||t<f)return;leaves.push({f,t,ty});calc()}
+$('la').onclick=()=>addLeave($('lf').value,$('lto').value,$('lt').value);
+window.rmLeave=i=>{leaves.splice(i,1);calc()};
+/* main render */
+function build(){const S=SEC[$('sec').value];subs=Object.keys(count($('sec').value,START,END,new Set()));pcts=subs.map(()=>85);
+ $('nt').innerHTML=S.old?'<div class="card note">The I-year PDFs supplied are 2024-25 timetables. Their slot layout was mapped as-is, so double-check against your current timetable.</div>':'';
+ $('tb').innerHTML='<tr><th>Subject</th><th>Attendance %</th><th>Held so far</th><th>Left</th><th>Must attend for 75%</th><th>Goal</th><th>Status</th></tr>'+subs.map((s,i)=>`<tr><td><b>${s}</b></td><td><input type="number" min="0" max="100" step="0.1" value="85" data-i="${i}"></td>${'<td></td>'.repeat(5)}</tr>`).join('');
+ $('tb').querySelectorAll('input').forEach(x=>x.oninput=()=>{pcts[+x.dataset.i]=+x.value||0;calc()});calc()}
+function calc(){const s=st(),c=last=compute(s),T=c.T,g=s.g,rows=[...$('tb').rows].slice(1),bad=[];
+ c.rows.forEach((r,i)=>{const cl=zc(r.now),tr=rows[i].cells;tr[1].firstChild.className=cl;
+  tr[2].innerHTML=`${r.H} <small>(${r.A} attended)</small>`;tr[3].innerHTML=`${r.R}`;
+  tr[4].innerHTML=r.l75.ok?(r.l75.need?`<b>${r.l75.need}</b> of ${r.l75.av}`:'<span class="ok">None, already safe</span>'):'<b class="bad">Impossible</b>';
+  tr[5].innerHTML=r.lg.ok?(r.lg.need?`Attend <b>${r.lg.need}</b>, can miss <b>${r.lg.skip}</b>`:`Already there, can miss <b>${r.lg.skip}</b>`):`<span class="bad">${g}% unreachable (max ${f1(r.lg.best)}%)</span>`;
+  let t;if(!r.l75.ok){t=['IRREVERSIBLE DETENTION','bad'];bad.push(r)}else if(r.now<75)t=['Recovery: attend '+r.l75.need,'bad'];else if(r.now<90)t=['Above 75%','wn'];else t=['Safe (90%+)','ok'];
+  tr[6].innerHTML=`<span class="tag ${t[1]}">${t[0]}</span><div class="bar ${cl}"><i style="width:${Math.min(r.now,100)}%"></i><u style="left:75%"></u><u style="left:90%"></u></div><small>Final if you attend the rest: ${f1(r.best)}%</small>`});
+ $('kp').innerHTML=`<div><small>Classes left in semester</small><b>${T.R}</b><small>${leaves.length?leaves.length+' leave entr'+(leaves.length>1?'ies':'y')+' applied':'no leaves planned'}</small></div>
+ <div><small>Overall now</small><b class="${zc(T.now)}">${f1(T.now)}%</b><small>${T.H} classes held</small></div>
+ <div><small>Overall must attend for 75%</small><b>${T.l75.ok?T.l75.need:'—'}</b><small>${T.l75.ok?'can miss '+T.l75.skip+' of '+T.av:'not possible'}</small></div>
+ <div><small>Overall for ${g}%</small><b>${T.lg.ok?T.lg.need:'—'}</b><small>${T.lg.ok?'can miss '+T.lg.skip:'max '+f1(T.lg.best)+'%'}</small></div>
+ <div><small>Final % if you attend the rest</small><b class="${zc(T.best)}">${f1(T.best)}%</b><small>after your leaves</small></div>`;
+ $('al').innerHTML=(!T.l75.ok||bad.length)?`<div class="alert" role="alert"><h2>⚠ IRREVERSIBLE DETENTION</h2>${!T.l75.ok?`<div>Overall: even attending <b>every</b> remaining class you can only reach <b>${f1(T.best)}%</b>, below 75%.</div>`:''}${bad.length?`<div>${bad.map(r=>`<b>${r.n}</b> (best possible ${f1(r.best)}%)`).join(' · ')} cannot get back to 75% before 29 Nov. Speak to your faculty advisor now about condonation, medical or OD.</div>`:''}</div>`:'';
+ $('c1').innerHTML=donut(T.now)+hearts(T.now)+`<div><small>Best possible by 29 Nov: <b class="${zc(T.best)}">${f1(T.best)}%</b></small></div>`;$('c2').innerHTML=bars(c.rows);$('c3').innerHTML=lineChart(c.pts);
+ $('ll').innerHTML=leaves.map((l,i)=>`<span class="chip"><b class="${l.ty==='A'?'bad':'ok'}">${LT[l.ty]}</b> ${fmt(l.f)}${l.t!==l.f?' → '+fmt(l.t):''}<button onclick="rmLeave(${i})" aria-label="Remove">×</button></span>`).join('')||'<small>No leaves added yet.</small>'}
+$('sec').onchange=build;['td','pd','tg','lv','hl'].forEach(i=>$(i).oninput=calc);
+
+/* ---- Attendance Advisor (reads live dashboard state, runs the math locally) ---- */
+const NUM={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,a:1};
+const MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'],DAYN=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+const STOP=new Set('for all and the will can how many drop below take leave from day days what much skip miss attendance class classes start starting tomorrow today sick next week off get need attend safe fall going over under than have has does did this that with about after before dont don t bunk absent mission missed subject percent percentage would should could'.split(' '));
+const AL={dbms:'database',ml:'machine',cn:'network',maths:'math',phy:'physics',chem:'chemistry',bio:'biology',mp:'microprocessor',dsp:'signal',ped:'philosophy',pps:'programming',uhv:'universal',ug:'universal'};
+const pad=n=>String(n).padStart(2,'0');
+function dates(q,td){const o=[];let m;const r1=new RegExp('(\\d{1,2})(?:st|nd|rd|th)?\\s*(?:of\\s+)?('+MON.join('|')+')','g'),r2=new RegExp('('+MON.join('|')+')[a-z]*\\.?\\s*(\\d{1,2})','g'),r3=/\d{4}-\d{2}-\d{2}/g,mk=(a,b)=>'2026-'+pad(MON.indexOf(a)+1)+'-'+pad(+b);
+ while(m=r3.exec(q))o.push(m[0]);while(m=r1.exec(q))o.push(mk(m[2],m[1]));while(m=r2.exec(q))o.push(mk(m[1],m[2]));o.sort();
+ if(/day after tomorrow/.test(q))o.push(add(td,2));else if(/tomorrow/.test(q))o.push(add(td,1));else if(/\btoday\b/.test(q))o.push(td);
+ DAYN.forEach((n,i)=>{if(q.includes(n)){o.push(add(td,((i-D(td).getUTCDay()+7)%7)||7))}});return o}
+function dur(q){let m=q.match(/(\d+|one|two|three|four|five|six|seven|eight|nine|ten|a)[\s-]*(?:working\s*)?(day|week)/);if(!m)return q.includes('week')?7:null;const n=isNaN(m[1])?NUM[m[1]]:+m[1];return m[2]==='week'?n*7:n}
+function findSub(q,rows){const tk=q.replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>=2&&!STOP.has(x)).map(x=>AL[x]||x);let best=null,bs=0;
+ rows.forEach(r=>{const w=r.n.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/);let sc=0;tk.forEach(t=>{if(t.length>=3&&w.some(x=>x.startsWith(t)))sc++});if(sc>bs){bs=sc;best=r}});return best}
+function snap(s,until){const c=compute(s),cnt=count(s.sec,c.from,until,c.hol,c.mf),o={};let H=0,A=0;
+ c.rows.forEach(r=>{const k=cnt[r.n]||{n:0,M:0,A:0},h=r.H+k.n-k.M,a=r.A+k.n-k.M-k.A;o[r.n]=h?a/h*100:100;H+=h;A+=a});o.__all=H?A/H*100:100;return o}
+const flag=p=>p>=75?'✅':'⚠️';
+function whatIf(q,s0,sub){const ds=dates(q,s0.td),n=dur(q)||1,f=ds[0]||add(s0.td,1),t=ds.length>=2&&ds[1]>ds[0]?ds[1]:add(f,n-1),ty=/\bod\b|on[- ]?duty|hackathon|symposium|competition|event|contest/.test(q)?'O':/certificate|medical|hospital|doctor/.test(q)?'M':'A',
+ base=compute(s0),lv={f,t,ty},s1=st([lv]),aft=compute(s1),sn=snap(s1,t),sb=sub?base.rows.find(r=>r.n===sub.n):base.T,sa=sub?aft.rows.find(r=>r.n===sub.n):aft.T,at=sub?sn[sub.n]:sn.__all,name=sub?sub.n:'overall attendance';
+ const lost=(sub?(count(s0.sec,f<base.from?base.from:f,t,base.hol,{})[sub.n]||{n:0}).n:Object.values(count(s0.sec,f<base.from?base.from:f,t,base.hol,{})).reduce((a,x)=>a+x.n,0));
+ let h=`<b>${name}</b> is at <b>${f1(sb.now)}%</b> now. `;
+ if(!lost)return h+`No classes fall on ${fmt(f)}${t!==f?' – '+fmt(t):''} (weekend/holiday), so nothing changes.`;
+ h+=`A ${t===f?'1-day':(Math.round((D(t)-D(f))/864e5)+1)+'-day'} ${ty==='O'?'OD':ty==='M'?'medical leave (with certificate)':'sick/absent leave'} (${fmt(f)}${t!==f?' → '+fmt(t):''}) affects <b>${lost}</b> class${lost>1?'es':''}.<br>`;
+ if(ty==='A')h+=`${flag(at)} Right after it you'd be at <b>${f1(at)}%</b>${at<75?' – <b class="bad">below the 75% line</b>':' – still above 75%'}.<br>`;
+ else h+=`${flag(at)} Right after it you'd be at <b>${f1(at)}%</b> (${ty==='O'?'OD counts as present':'those classes are condoned'}).<br>`;
+ h+=`Finishing the semester: attending every other class gives <b class="${zc(sa.best)}">${f1(sa.best)}%</b>. `;
+ if(!sa.l75.ok)h+=`<br><b class="bad">🚨 IRREVERSIBLE DETENTION: even full attendance after this leave leaves you at ${f1(sa.best)}%.</b>`;
+ else h+=sa.l75.need?`To stay ≥75% you must attend <b>${sa.l75.need}</b> of the remaining ${sa.l75.av} classes (can miss ${sa.l75.skip}).`:`You'd still be safe for 75% and can miss up to ${sa.l75.skip} more.`;
+ if(ty==='A'){const m=compute(st([{f,t,ty:'M'}])),mr=sub?m.rows.find(r=>r.n===sub.n):m.T;h+=`<br>💡 With a medical certificate that gets condoned, your final could be <b>${f1(mr.best)}%</b>.`}
+ if(!sub){const w=Object.keys(sn).filter(k=>k!=='__all'&&sn[k]<75);if(w.length)h+=`<br>⚠️ Subjects under 75% right after: ${w.map(k=>k+' ('+f1(sn[k])+'%)').join(', ')}.`}
+ return h+`<br><button class="pri" onclick="addLeave('${f}','${t}','${ty}')">Add this leave to my plan</button>`}
+function reply(q0){const q=q0.toLowerCase(),s0=st(),c=compute(s0),sub=findSub(q,c.rows),T=c.T,hasDate=dates(q,s0.td).length>0,hasDur=/\d+[\s-]*(day|week)|(one|two|three|four|five|six|seven|eight|nine|ten|a)[\s-]*(day|week)|\bweek\b/.test(q),leaveW=/leave|absent|miss|skip|bunk|off\b|\bod\b|on[- ]?duty|sick|fever|unwell|away|hackathon/.test(q);
+ if(!c.rows.length)return'Pick your section first.';
+ if(/chemistry|physics|biology/.test(q)&&!sub)return`I couldn't find that subject in <b>${s0.sec}</b>. Your subjects: ${c.rows.map(r=>r.n).join(', ')}.`;
+ if(leaveW&&(hasDate||hasDur))return whatIf(q,s0,sub);
+ if(/how many.*(miss|skip|bunk|leave|absent|off)|can i (miss|skip|bunk)|safe to (miss|skip)|\bbunk/.test(q)){const L=sub?[sub]:c.rows;return`Classes you can still miss and stay ≥75% (${T.R} classes left overall):<br>`+L.map(r=>r.l75.ok?`• <b>${r.n}</b>: ${r.l75.skip} of ${r.l75.av}${r.l75.skip===0?' ⚠️ zero margin':''}`:`• <b>${r.n}</b>: <b class="bad">🚨 can't reach 75%</b>`).join('<br>')+`<br>Overall: ${T.l75.ok?'you can miss '+T.l75.skip+' more':'<b class="bad">not recoverable</b>'}.`}
+ if(/(need|must|have to|should).*attend|how many.*attend|to reach|to get to|recover/.test(q)){const L=sub?[sub]:c.rows,g=s0.g;return`To stay ≥75%, then to reach ${g}%:<br>`+L.map(r=>`• <b>${r.n}</b> (${f1(r.now)}%): ${r.l75.ok?'attend '+r.l75.need+' of '+r.l75.av:'<b class="bad">impossible</b>'}; ${r.lg.ok?g+'%: attend '+r.lg.need:g+'% unreachable (max '+f1(r.lg.best)+'%)'}`).join('<br>')}
+ if(/risk|danger|worst|which|detention|weak|lowest/.test(q)){const o=[...c.rows].sort((a,b)=>a.now-b.now).slice(0,3);return`Most at risk:<br>`+o.map(r=>`• <b>${r.n}</b>: ${f1(r.now)}% now, best possible ${f1(r.best)}%${!r.l75.ok?' 🚨 irreversible':r.now<75?' ⚠️ recovery mode':''}`).join('<br>')}
+ if(sub&&!/overall/.test(q))return`<b>${sub.n}</b>: ${f1(sub.now)}% now (${sub.A}/${sub.H}). ${sub.R} classes left. ${sub.l75.ok?(sub.l75.need?'Attend '+sub.l75.need+' more to stay ≥75%.':'Safe; you can miss '+sub.l75.skip+'.'):'<b class="bad">🚨 Irreversible detention risk (max '+f1(sub.best)+'%).</b>'}`;
+ if(/status|overall|how am i|where do i stand|summary|attendance|doing/.test(q))return`Overall <b class="${zc(T.now)}">${f1(T.now)}%</b> across ${T.H} classes, ${T.R} left. ${T.l75.ok?(T.l75.need?'Attend at least '+T.l75.need+' of the remaining to stay ≥75%.':'You are safe; you can miss '+T.l75.skip+'.'):'<b class="bad">🚨 Irreversible detention: best possible '+f1(T.best)+'%.</b>'} Best final: ${f1(T.best)}%.`;
+ return`I can answer things like:<br>• "If I take a 3-day sick leave from tomorrow, will Chemistry drop below 75%?"<br>• "OD on 12 Oct for a hackathon"<br>• "How many classes can I miss in DBMS?"<br>• "Which subject is most at risk?"`}
+function say(t,c){const d=document.createElement('div');d.className='m '+c;c==='u'?d.textContent=t:d.innerHTML=t;$('ms').appendChild(d);$('ms').scrollTop=1e9}
+$('fab').onclick=()=>{$('cb').classList.toggle('on');if(!$('ms').children.length)say('Hi! I read your dashboard (section, %, leaves) and run the math. Ask me about leaves, OD, or how many classes you can miss.','b')};
+$('cx').onclick=()=>$('cb').classList.remove('on');
+$('qs').innerHTML=['3-day sick leave from tomorrow','How many classes can I miss?','Which subject is at risk?'].map(x=>`<button type="button">${x}</button>`).join('');
+$('qs').onclick=e=>{if(e.target.tagName==='BUTTON'){say(e.target.textContent,'u');say(reply(e.target.textContent),'b')}};
+$('cf').onsubmit=e=>{e.preventDefault();const v=$('ci').value.trim();if(!v)return;$('ci').value='';say(v,'u');try{say(reply(v),'b')}catch(x){say('Sorry, I could not work that out. Try rephrasing.','b')}};
+function tab(t){document.querySelectorAll('#nv button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('att').hidden=t!=='att';
+ [['r1','src1','IST Room Finder'],['r2','src2','Campus Rooms']].forEach(([k,s,n])=>{$(k).hidden=t!==k;if(t===k&&!$(k).firstChild){const f=document.createElement('iframe');f.title=n;f.srcdoc=$(s).textContent.replace(/<\\\/script>/g,'<\/script>');$(k).appendChild(f)}});
+ $('fab').hidden=t!=='att';if(t!=='att')$('cb').classList.remove('on')}
+$('nv').onclick=e=>{const b=e.target.closest('button');if(b)tab(b.dataset.t)};
+build();
+</script></body></html>
